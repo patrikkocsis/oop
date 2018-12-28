@@ -1,24 +1,24 @@
 #ifndef FILE_H
 #define FILE_H
+
+#include <iostream>
+#include <string>
+
 using namespace std;
 
-#include <string>
-#include <iostream>
+class File
+{
+private:
 
-class File{
-private: 
-	string nev;
-	string tartalom;
+	string fnev;
+	string ftartalom;
 
 public:
-	File(string nev, string tartalom = "") :nev(nev), tartalom(tartalom) {}
+
+	File(string fnev, string ftartalom="") : fnev(fnev), ftartalom(ftartalom) {}
 	
-	string getname() const {
-		return nev;
-	} 
-	string gettart() const {
-		return tartalom;
-	}
+	string getFnev() const { return fnev; }
+	string getFtartalom() const { return ftartalom; }
 };
 
-#endif // FILE_H
+#endif // !FILE:H
