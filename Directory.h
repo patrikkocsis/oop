@@ -1,45 +1,43 @@
-#ifndef DIRECTORY_H
-#define DIRECTORY_H
+#ifndef D_H
+#define D_H
 
-#include "file.h"
-#include <string>
 #include <iostream>
-#include <map>
-using namespace std;
+#include <string>
 #include <vector>
+#include "File.h"
 
-class Directory{
+using namespace std;
+
+class Directory
+{
 private:
-	string nev;
-	vector<File*> konyvtar;
+
+	string knev;
+	vector <File*> fajlok;
 
 public:
-	Directory(string nev) :nev(nev) {}
+
+	Directory(string knev) : knev(knev) {}
+
 	int touch(string fnev, string ftartalom) {
-		int db =0;
-		for (int i = 0; i < konyvtar.size(); i++) {
-			if (konyvtar[i]->getname() == fnev) {
-				db++;
-				
-			}
+		int db = 0;
+		for (int i = 0; i < fajlok.size(); i++) {
+			if (fajlok[i]->getFnev() == fnev) { db++; }
 		}
 		if (db == 0) {
-		konyvtar.push_back(new File(fnev,ftartalom));
-		return 0;
+			fajlok.push_back(new File(fnev, ftartalom));
+			return 0;
 		}
-		else return 1;
-			
-	}
-	string getnev() const {
-		return nev;
+		else { return 1; }
 	}
 
 	void ls() const {
-		for (int i = 0; i < konyvtar.size(); i++) {
-			cout << konyvtar[i]->getname() << endl;
+		for (int i = 0; i < fajlok.size(); i++) {
+			cout << "  |	|__" << fajlok[i]->getFnev() << endl;
 		}
 	}
-	
+
+	string getKnev() const { return knev; }
 };
 
-#endif // DIRECTORY_H
+#endif
